@@ -1,0 +1,24 @@
+{
+  "name": "cookiejs",
+  "version": "0.1.0",
+  "authors": [
+    "Brad Berger <brad@bradb.net>"
+  ],
+  "description": "A complete cookies reader/writer framework with full unicode support.",
+  "main": "dist/cookie.js",
+  "keywords": [
+    "javascript",
+    "cookie",
+    "framework",
+    "elementaryjs"
+  ],
+  "license": "MPL",
+  "homepage": "https://github.com/elementaryjs/cookiejs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
