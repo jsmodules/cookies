@@ -3,26 +3,26 @@
 
 A complete cookies reader/writer framework with full unicode support in under 1 kB.
 
-# Credits
+## Credits
 
 It's taken entirely from the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/API/document.cookie#A_little_framework.3A_a_complete_cookies_reader.2Fwriter_with_full_unicode_support).
 
 ## Syntax
 
 ### Setting a cookie
-    Cookie.set(name, value[, end[, path[, domain[, secure]]]]);
+    Cookies.set(name, value[, end[, path[, domain[, secure]]]]);
 
 ### Getting a cookie value
-    var value = Cookie.get(name);
+    var value = Cookies.get(name);
 
 ### Removing a cookie
-    Cookie.remove(name[, path], domain);
+    Cookies.remove(name[, path], domain);
 
 ### Checking if cookie exists
-    var has = Cookie.has(name);
+    var has = Cookies.has(name);
 
 ### Getting a list of all cookies
-    var keys = Cookie.keys();
+    var keys = Cookies.keys();
 
 ## Security
 
@@ -40,10 +40,21 @@ using Social Engineering or by exploiting an XSS vulnerability in the applicatio
 The HTTPOnly cookie attribute can help to mitigate this attack by preventing access to cookie value through
 Javascript. Read more about [Cookies and Security](http://www.nczonline.net/blog/2009/05/12/cookies-and-security/).
 
-## To Do
+## Tests
 
-- Add tests
+Tests are set up in the `tests` directory and use the [Jasmine](https://jasmine.github.io/2.0/introduction.html) test runner.
+
+The project uses [GulpJS](//gulpjs.org) for the entire workflow. So make sure that you update the NPM requirements:
+
+    npm update
+    
+Then to make changes and test use the default gulp task:
+
+    gulp
+    
+This task watches the project directories and runs a static server with livereload to watch the changes and run
+tests on every change.
 
 ## Roadmap
 
-Not much is planned. It does what it needs to. Feel free to submit issues or pull requests.
+Not much is planned. It does what it needs to. Feel free to submit issues or pull requests if you have any ideas.

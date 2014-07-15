@@ -5,21 +5,21 @@
     /**
      * @see https://developer.mozilla.org/en-US/docs/DOM/document.cookie
      */
-    function Cookie() {
+    function Cookies() {
         this.version = "0.1.0";
     }
 
     /**
-     * Syntax: Cookie.get(name)
+     * Syntax: Cookies.get(name)
      */
-    Cookie.prototype.get = function (sKey) {
+    Cookies.prototype.get = function (sKey) {
         return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
     };
 
     /**
-     * Syntax: Cookie.set(name, value[, end[, path[, domain[, secure]]]])
+     * Syntax: Cookies.set(name, value[, end[, path[, domain[, secure]]]])
      */
-    Cookie.prototype.set = function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+    Cookies.prototype.set = function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
         if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
             return false;
         }
@@ -42,9 +42,9 @@
     };
 
     /**
-     * Syntax: Cookie.remove(name[, path], domain)
+     * Syntax: Cookies.remove(name[, path], domain)
      */
-    Cookie.prototype.remove = function (sKey, sPath, sDomain) {
+    Cookies.prototype.remove = function (sKey, sPath, sDomain) {
         if (!sKey || !this.has(sKey)) {
             return false;
         }
@@ -53,16 +53,16 @@
     };
 
     /**
-     * Syntax: Cookie.has(name)
+     * Syntax: Cookies.has(name)
      */
-    Cookie.prototype.has = function (sKey) {
+    Cookies.prototype.has = function (sKey) {
         return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
     };
 
     /**
-     * Syntax: Cookie.keys()
+     * Syntax: Cookies.keys()
      */
-    Cookie.prototype.keys = function () {
+    Cookies.prototype.keys = function () {
         var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
         for (var nIdx = 0; nIdx < aKeys.length; nIdx++) {
             aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]);
@@ -72,10 +72,10 @@
 
     if (typeof define === "function") {
         define([], function () {
-            return new Cookie();
+            return new Cookies();
         });
     } else {
-        window.Cookie = new Cookie();
+        window.Cookies = Cookies;
     }
 
 })(window);
