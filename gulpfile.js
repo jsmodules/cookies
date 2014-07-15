@@ -3,34 +3,36 @@ var gulp = require("gulp"),
     jshint = require("gulp-jshint"),
     stylish = require("jshint-stylish"),
     size = require("gulp-size"),
-    jasmine = require("gulp-jasmine"),
-    connect = require("gulp-connect"),
-    gulpOpen = require("gulp-open"),
-    p = function (path) {
-        return __dirname + (path.charAt(0) === "/" ? "" : "/") + path;
-    },
-    paths = {
-        src: p("src/**/*.js"),
-        dist: p("dist")
+    _ = require("lodash"),
+    karma = require("karma").server;
+
+var p = function (path) {
+    return __dirname + (path.charAt(0) === "/" ? "" : "/") + path;
+};
+
+var paths = {
+    src: p("src/**/*.js"),
+    dist: p("dist")
+};
+
+var karmaFiles = [
+    p("dist/cookies.js"),
+    p("test/spec/**/*.js")
+];
+
+/**
+ * Watch for file changes and re-run tests on each change
+ */
+gulp.task("tdd", function (done) {
+
+    var karmaTddConf = {
+        browsers: ["PhantomJS"],
+        frameworks: ["jasmine"],
+        files: karmaFiles
     };
 
-gulp.task("test", ["jshint"], function () {
-    gulp.src(p("test/spec/test.js"))
-        .pipe(jasmine());
+    karma.start(karmaTddConf, done);
 
-});
-
-gulp.task("connect", function () {
-    connect.server({
-        root: p(""),
-        port: 8000,
-        livereload: true
-    });
-});
-
-gulp.task("serve", ["connect"], function () {
-    gulp.src(p("test/index.html"))
-        .pipe(gulpOpen("", {url: "http://localhost:8000/test/index.html"}));
 });
 
 gulp.task("jshint", function () {
@@ -44,11 +46,9 @@ gulp.task("uglify", function () {
     gulp.src(paths.src)
         .pipe(uglify({outSourceMap: true}))
         .pipe(size({showFiles: true, gzip: true}))
-        .pipe(gulp.dest(paths.dist))
-        .pipe(connect.reload());
+        .pipe(gulp.dest(paths.dist));
 
 });
-
 
 gulp.task("watch", function () {
     gulp.watch([paths.src, p("test/spec/**/*.js"), p("test/index.html")], ["uglify"]);
@@ -56,4 +56,19 @@ gulp.task("watch", function () {
 
 gulp.task("build", ["uglify"]);
 
-gulp.task("default", ["build", "watch", "serve"]);
+/**
+ * Run test once and exit
+ */
+gulp.task("test", ["jshint"], function (done) {
+
+    var karmaTestConf = {
+        browsers: ["PhantomJS"],
+        frameworks: ["jasmine"],
+        files: karmaFiles
+    };
+
+    karma.start(_.assign({}, karmaTestConf, {singleRun: true}), done);
+
+});
+
+gulp.task("default", ["build", "tdd", "watch"]);

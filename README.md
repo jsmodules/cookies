@@ -42,7 +42,7 @@ Javascript. Read more about [Cookies and Security](http://www.nczonline.net/blog
 
 ## Tests
 
-Tests are set up in the `tests` directory and use the [Jasmine](https://jasmine.github.io/2.0/introduction.html) test runner.
+Tests are set up in the `tests` directory and use the [Karma  test runner](https://karma-runner.github.io).
 
 The project uses [GulpJS](//gulpjs.org) for the entire workflow. So make sure that you update the NPM requirements:
 
@@ -52,8 +52,7 @@ Then to make changes and test use the default gulp task:
 
     gulp
     
-This task watches the project directories and runs a static server with livereload to watch the changes and run
-tests on every change.
+This task watches the project directories, compiles the JavaScript, and runs all tests on the compiled JavaScript.
 
 ## Roadmap
 
