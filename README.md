@@ -1,7 +1,7 @@
 
 # Cookiejs
 
-[![Build Status](https://travis-ci.org/elementaryjs/cookies.svg?branch=master)](https://travis-ci.org/elementaryjs/cookies)
+[![Build Status](https://travis-ci.org/elementaryjs/cookies.svg)](https://travis-ci.org/elementaryjs/cookies)
 
 A complete cookies reader/writer framework with full unicode support in under 1 kB with 100% test coverage.
 
