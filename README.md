@@ -1,7 +1,7 @@
 
 # Cookiejs
 
-A complete cookies reader/writer framework with full unicode support in under 1 kB.
+A complete cookies reader/writer framework with full unicode support in under 1 kB with 100% test coverage.
 
 ## Credits
 
