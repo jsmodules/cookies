@@ -2,7 +2,7 @@
     "name": "elementaryjs-cookies",
     "version": "0.1.0",
     "authors": [
-        "Brad Berger <brad@bradb.net>"
+        "Brad Berger <brad@bitola.co>"
     ],
     "description": "A complete cookies reader/writer framework with full unicode support.",
     "main": "dist/cookie.js",
@@ -13,7 +13,7 @@
         "elementaryjs"
     ],
     "license": "MPL",
-    "homepage": "https://github.com/elementaryjs/cookiejs",
+    "homepage": "https://github.com/elementaryjs/cookies",
     "ignore": [
         "**/.*",
         "node_modules",
