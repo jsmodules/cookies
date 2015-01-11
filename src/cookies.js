@@ -1,4 +1,3 @@
-/* global define: false */
 (function (window) {
 
     "use strict";
@@ -9,7 +8,7 @@
      * @see https://developer.mozilla.org/en-US/docs/DOM/document.cookie
      */
     function Cookies() {
-        this.version = "0.1.0";
+        this.version = "0.1.1";
     }
 
     /**
@@ -40,7 +39,7 @@
                     break;
             }
         }
-        document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
+        document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue.toString()) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
         return true;
     };
 
@@ -73,15 +72,9 @@
         return aKeys;
     };
 
-    if (typeof define === "function") {
-        define([], function () {
-            return new Cookies();
-        });
-    } else {
-        window.Cookies = Cookies;
-    }
+    window.Cookies = Cookies;
 
-})(window);
+}(window));
 
 
 

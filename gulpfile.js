@@ -28,14 +28,14 @@ gulp.task("build", function() {
 });
 
 gulp.task("hint:fail", function() {
-    return gulp.src(__dirname + "/src/cookies.js")
+    return gulp.src(__dirname + "/src/**/*.js")
         .pipe(jshint())
         .pipe(jshint.reporter("jshint-stylish"))
         .pipe(jshint.reporter("fail"))
 });
 
 gulp.task("hint", function() {
-    return gulp.src(__dirname + "/src/cookies.js")
+    return gulp.src(__dirname + "/src/**/*.js")
         .pipe(jshint())
         .pipe(jshint.reporter("jshint-stylish"));
 });
@@ -54,7 +54,11 @@ gulp.task("test", ["hint:fail"], function() {
 });
 
 gulp.task("default", function() {
-    gulp.watch(__dirname + "/src/js/**/*.js", ["hint", "uglify"]);
+
+    gulp.watch(__dirname + "/src/**/*.js", function() {
+        return runSequence("hint", "uglify")
+    });
+
     gulp.src(testFiles)
         .pipe(karma({
             configFile: "karma.conf.js",

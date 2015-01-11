@@ -117,7 +117,7 @@ module.exports = function(config) {
     basePath: "",
     frameworks: ["jasmine"],
     files: [
-      "src/cookies.js",
+      "dist/cookies.js",
       "test/unit/**/*.spec.js"
     ],
     reporters: ["dots", "saucelabs"],
@@ -127,7 +127,7 @@ module.exports = function(config) {
     sauceLabs: {
       testName: "ElementaryJS cookies framework unit test"
     },
-    captureTimeout: 240000,
+    captureTimeout: 120000,
     customLaunchers: customLaunchers,
     browsers: Object.keys(customLaunchers),
     singleRun: true

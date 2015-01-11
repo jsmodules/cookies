@@ -1,7 +1,7 @@
 {
   "name": "elementaryjs-cookies",
   "description": "A complete cookies reader/writer framework with full unicode support.",
-  "version": "0.3.11",
+  "version": "0.1.1",
   "homepage": "http://github.com/elementaryjs/cookies",
   "author": {
     "name": "Brad Berger",
