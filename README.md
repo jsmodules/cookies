@@ -42,13 +42,40 @@ using Social Engineering or by exploiting an XSS vulnerability in the applicatio
 The HTTPOnly cookie attribute can help to mitigate this attack by preventing access to cookie value through
 Javascript. Read more about [Cookies and Security](http://www.nczonline.net/blog/2009/05/12/cookies-and-security/).
 
+## Browser Support
+
+Should work in pretty much all browsers.
+
+Tests are run against the following browsers:
+
+- Firefox (latest)
+- Firefox (beta)
+- Chrome (latest)
+- Chrome (beta)
+- Safari (OS X 10.10)
+- Safari (OS X 10.09)
+- Opera (latest)
+- Internet Explorer 8
+- Internet Explorer 9
+- Internet Explorer 10
+- Internet Explorer 11
+- Safari on iOS 6
+- Safari on iOS 7
+- Safari on iOS 8
+- Android (latest, currently 5)
+- Android 4.4
+- Android 4.3
+- Android 4.2
+- Android 4.1
+- Android 4.0
+
 ## Tests
 
-Tests are set up in the `tests` directory and use the [Karma  test runner](https://karma-runner.github.io).
+Tests are set up in the `tests` directory and use the [Karma test runner](https://karma-runner.github.io).
 
 The project uses [GulpJS](//gulpjs.org) for the entire workflow. So make sure that you update the NPM requirements:
 
-    npm update
+    npm install
     
 Then to make changes and test use the default gulp task:
 

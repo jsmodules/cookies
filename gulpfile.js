@@ -1,74 +1,63 @@
 var gulp = require("gulp"),
-    uglify = require("gulp-uglifyjs"),
+    uglify = require("gulp-uglify"),
     jshint = require("gulp-jshint"),
-    stylish = require("jshint-stylish"),
+    karma = require("gulp-karma"),
+    runSequence = require("run-sequence"),
+    fs = require("fs"),
     size = require("gulp-size"),
-    _ = require("lodash"),
-    karma = require("karma").server;
+    testFiles = ["src/cookies.js", "test/unit/**/*.spec.js"],
+    paths = {src: p("src/**/*.js"), dist: p("dist")};
 
-var p = function (path) {
+function p(path) {
     return __dirname + (path.charAt(0) === "/" ? "" : "/") + path;
-};
-
-var paths = {
-    src: p("src/**/*.js"),
-    dist: p("dist")
-};
-
-var karmaFiles = [
-    p("dist/cookies.js"),
-    p("test/spec/**/*.js")
-];
-
-/**
- * Watch for file changes and re-run tests on each change
- */
-gulp.task("tdd", function (done) {
-
-    var karmaTddConf = {
-        browsers: ["PhantomJS"],
-        frameworks: ["jasmine"],
-        files: karmaFiles
-    };
-
-    karma.start(karmaTddConf, done);
-
-});
-
-gulp.task("jshint", function () {
-    return gulp.src(paths.src)
-        .pipe(jshint())
-        .pipe(jshint.reporter(stylish))
-        .pipe(jshint.reporter("default"));
-});
+}
 
 gulp.task("uglify", function () {
     gulp.src(paths.src)
-        .pipe(uglify({outSourceMap: true}))
+        .pipe(uglify())
         .pipe(size({showFiles: true, gzip: true}))
         .pipe(gulp.dest(paths.dist));
-
 });
 
 gulp.task("watch", function () {
     gulp.watch([paths.src, p("test/spec/**/*.js"), p("test/index.html")], ["uglify"]);
 });
 
-gulp.task("build", ["uglify"]);
+gulp.task("build", function() {
+    return runSequence("test", ["image-min", "uglify"]);
+});
 
-/**
- * Run test once and exit
- */
-gulp.task("test", ["jshint"], function (done) {
+gulp.task("hint:fail", function() {
+    return gulp.src(__dirname + "/src/cookies.js")
+        .pipe(jshint())
+        .pipe(jshint.reporter("jshint-stylish"))
+        .pipe(jshint.reporter("fail"))
+});
 
-    var karmaTestConf = {
-        browsers: ["PhantomJS"],
-        frameworks: ["jasmine"],
-        files: karmaFiles
-    };
+gulp.task("hint", function() {
+    return gulp.src(__dirname + "/src/cookies.js")
+        .pipe(jshint())
+        .pipe(jshint.reporter("jshint-stylish"));
+});
 
-    karma.start(_.assign({}, karmaTestConf, {singleRun: true}), done);
+gulp.task("test", ["hint:fail"], function() {
+    return gulp.src(testFiles)
+        .pipe(karma({
+            configFile: "karma.conf.js",
+            action: "run"
+        }))
+        .on("error", function(err) {
+            // Make sure failed tests cause gulp to exit non-zero
+            throw err;
+        });
 
 });
 
-gulp.task("default", ["build", "tdd", "watch"]);
+gulp.task("default", function() {
+    gulp.watch(__dirname + "/src/js/**/*.js", ["hint", "uglify"]);
+    gulp.src(testFiles)
+        .pipe(karma({
+            configFile: "karma.conf.js",
+            action: "watch"
+        }));
+});
