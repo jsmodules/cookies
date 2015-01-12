@@ -9,51 +9,31 @@ module.exports = function(config) {
       browserName: "chrome",
       platform: "Linux"
     },
-    "SL_Chrome_beta": {
+    "SL_Chrome_26": {
       base: "SauceLabs",
       browserName: "chrome",
       platform: "Linux",
-      verion: "beta"
+      version: "26"
     },
     "SL_IE": {
       base: "SauceLabs",
-      browserName: "internet explorer"
+      browserName: "internet explorer",
     },
-    "SL_IE_10": {
+    "SL_IE_6": {
       base: "SauceLabs",
       browserName: "internet explorer",
-      version: "10"
-    },
-    "SL_IE_9": {
-      base: "SauceLabs",
-      browserName: "internet explorer",
-      version: "9"
-    },
-    "SL_IE_8": {
-      base: "SauceLabs",
-      browserName: "internet explorer",
-      version: "8"
+      platform: "Windows XP",
+      version: "6"
     },
     "SL_Firefox": {
       base: "SauceLabs",
       browserName: "firefox"
     },
-    "SL_Firefox_beta": {
+    "SL_Firefox_3_6": {
       base: "SauceLabs",
       browserName: "firefox",
-      version: "beta"
-    },
-    "SL_safari_ios8": {
-      base: "SauceLabs",
-      browserName: "iphone",
-      platform: "OS X 10.9",
-      version: "8.1"
-    },
-    "SL_safari_ios7": {
-      base: "SauceLabs",
-      browserName: "iphone",
-      platform: "OS X 10.9",
-      version: "7.1"
+      platform: "Linux",
+      version: "3.6"
     },
     "SL_safari_ios6": {
       base: "SauceLabs",
@@ -63,31 +43,8 @@ module.exports = function(config) {
     },
     "SL_android": {
       base: "SauceLabs",
-      browserName: "android"
-    },
-    "SL_android_4_4": {
-      base: "SauceLabs",
       browserName: "android",
-      platform: "linux",
-      version: "4.4"
-    },
-    "SL_android_4_3": {
-      base: "SauceLabs",
-      browserName: "android",
-      platform: "linux",
-      version: "4.3"
-    },
-    "SL_android_4_2": {
-      base: "SauceLabs",
-      browserName: "android",
-      platform: "linux",
-      version: "4.2"
-    },
-    "SL_android_4_1": {
-      base: "SauceLabs",
-      browserName: "android",
-      platform: "linux",
-      version: "4.1"
+      platform: "linux"
     },
     "SL_android_4_0": {
       base: "SauceLabs",
@@ -97,19 +54,23 @@ module.exports = function(config) {
     },
     "SL_safari": {
       base: "SauceLabs",
-      browserName: "safari",
-      platform: "OS X 10.10"
+      browserName: "safari"
     },
-    "SL_safari_7": {
+    "SL_safari_5": {
       base: "SauceLabs",
       browserName: "safari",
-      platform: "OS X 10.9",
-      version: "7"
+      platform: "OS X 10.6",
+      version: "5"
     },
     "SL_opera": {
       base: "SauceLabs",
-      browserName: "Opera",
-      platform: "Linux"
+      browserName: "opera"
+    },
+    "SL_opera_11": {
+      base: "SauceLabs",
+      browserName: "opera",
+      platform: "Windows XP",
+      version: "11"
     }
   };
 

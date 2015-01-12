@@ -19,10 +19,6 @@ gulp.task("uglify", function () {
         .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task("watch", function () {
-    gulp.watch([paths.src, p("test/spec/**/*.js"), p("test/index.html")], ["uglify"]);
-});
-
 gulp.task("build", function() {
     return runSequence("test", ["image-min", "uglify"]);
 });
@@ -50,15 +46,12 @@ gulp.task("test", ["hint:fail"], function() {
             // Make sure failed tests cause gulp to exit non-zero
             throw err;
         });
-
 });
 
 gulp.task("default", function() {
-
     gulp.watch(__dirname + "/src/**/*.js", function() {
         return runSequence("hint", "uglify")
     });
-
     gulp.src(testFiles)
         .pipe(karma({
             configFile: "karma.conf.js",
