@@ -17,7 +17,7 @@ module.exports = function(config) {
     },
     "SL_IE": {
       base: "SauceLabs",
-      browserName: "internet explorer",
+      browserName: "internet explorer"
     },
     "SL_IE_6": {
       base: "SauceLabs",
@@ -88,7 +88,7 @@ module.exports = function(config) {
     sauceLabs: {
       testName: "ElementaryJS cookies framework unit test"
     },
-    captureTimeout: 120000,
+    captureTimeout: 240000,
     customLaunchers: customLaunchers,
     browsers: Object.keys(customLaunchers),
     singleRun: true

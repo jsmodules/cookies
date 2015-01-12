@@ -20,4 +20,28 @@ describe("Removing cookie", function () {
         expect(cookies.has("foo")).toBe(false);
     });
 
+    it("should handle remove with path properly when match", function () {
+
+    });
+
+    it("should handle remove with domain properly when match", function () {
+
+    });
+
+    it("should handle remove with path and domain properly when match", function () {
+
+    });
+
+    it("should handle remove with path properly when do not match", function () {
+
+    });
+
+    it("should handle remove with domain properly when do not match", function () {
+
+    });
+
+    it("should handle remove with path and domain properly when do not match", function () {
+
+    });
+
 });
