@@ -4,20 +4,11 @@ module.exports = function(config) {
 
   // Check out https://saucelabs.com/platforms for all browser/platform combos
   var customLaunchers = {
-    "SL_Chrome": {
-      base: "SauceLabs",
-      browserName: "chrome",
-      platform: "Linux"
-    },
     "SL_Chrome_26": {
       base: "SauceLabs",
       browserName: "chrome",
       platform: "Linux",
       version: "26"
-    },
-    "SL_IE": {
-      base: "SauceLabs",
-      browserName: "internet explorer"
     },
     "SL_IE_6": {
       base: "SauceLabs",
@@ -44,7 +35,7 @@ module.exports = function(config) {
     "SL_android": {
       base: "SauceLabs",
       browserName: "android",
-      platform: "linux"
+      platform: "linux",
     },
     "SL_android_4_0": {
       base: "SauceLabs",

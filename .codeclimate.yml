@@ -1,0 +1,8 @@
+languages:
+	JavaScript: true
+exclude_paths:
+- "gulpfile.js"
+- "karma.conf.js"
+- "karma.conf-ci.js"
+- "test/unit/*.js"
+- "dist/*.js"
