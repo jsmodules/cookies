@@ -1,8 +1,9 @@
 
 # Cookiejs
 
-[![Build Status](https://travis-ci.org/elementaryjs/cookies.svg)](https://travis-ci.org/elementaryjs/cookies)
+[![Build Status](https://semaphoreci.com/api/v1/projects/7aad66cd-8fdc-496e-8884-f30f8441e7dd/519562/badge.svg)](https://semaphoreci.com/brad/cookies)      
 [![Dependency Status](https://david-dm.org/elementaryjs/cookies.svg)](https://david-dm.org/elementaryjs/cookies)
+[![Code Climate](https://codeclimate.com/github/bradberger/cookies/badges/gpa.svg)](https://codeclimate.com/github/bradberger/cookies)
 
 A complete cookies reader/writer framework with full unicode support in under 1 kB with 100% test coverage.
 
